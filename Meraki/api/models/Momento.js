@@ -18,10 +18,10 @@ module.exports = {
       type: 'string'
     },
     inicio: {
-      type: 'date'
+      type: 'datetime'
     },
     fin: {
-      type: 'date'
+      type: 'datetime'
     },
     preguntas: {
       type: 'boolean'

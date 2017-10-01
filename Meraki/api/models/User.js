@@ -11,19 +11,31 @@ module.exports = {
     name: {
       type: 'string'
     },
-    password: {
-      type: 'string'
+    encryptedPassword: {
+      type: 'string',
     },
-    edad: {
-      type: 'integer'
+    staff: {
+      type : "boolean",
+     defaultsTo : false
     },
     email: {
       type: 'email',
+      required: true,
       unique: true
     },
     horarios: {
       collection: 'horario',
       via: 'user'
-    }
+    },
+    // Este método es para evitar pasar toda la información del modelo
+   // Evitamos pasar los siguientes parámetros: password, confirmation, encryptedpassword y _csrf.
+   toJSON: function() {
+     var obj = this.toObject();
+     delete obj.password;
+     delete obj.confirmation;
+     delete obj.encryptedPassword;
+     delete obj._csrf;
+     return obj;
+   }
   }
 };
