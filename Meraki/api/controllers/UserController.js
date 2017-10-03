@@ -6,8 +6,8 @@
  */
 
 module.exports = {
-	new: function (req, res) {
-    res.view();
+    new: function (req, res) {
+        res.view();
   },
   index: function (req, res) {
     User.find(function foundUser (err, users) {
