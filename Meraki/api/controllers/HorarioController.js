@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-	index: function(req, res)
+	listarEventos: function(req, res)
    {
     Horario.find().exec(function(err, b)
       {
@@ -17,7 +17,7 @@ module.exports = {
         return res.json(b);
       });
    },
-   listarEventos: function(req, res)
+   listarMomentos: function(req, res)
     {
       Horario.findOne({id: req.param("id")}).populate('momentos').exec(function (err, found){
         if (err) {

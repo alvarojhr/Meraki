@@ -20,6 +20,10 @@ module.exports = {
       });
     });
   },
+  processLogin:function (req, res) {
+      sails.log(req.params.all());
+      res.redirect('/eventos');
+},
   create: function(req, res) {
       User.create(req.params.all(), function userCreated(err, user) {
 				if (err) {

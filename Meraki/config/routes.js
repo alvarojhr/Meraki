@@ -41,7 +41,10 @@ module.exports.routes = {
     'new': true,
     index: 'sessionAuth',
     '*': true
-  }
+  },
+  'get /login': { view: 'user/login' },
+  'post /login': 'UserController.processLogin',
+  '/eventos': 'HorarioController.listarEventos'
 
   /***************************************************************************
   *                                                                          *
