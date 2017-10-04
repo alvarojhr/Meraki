@@ -1,0 +1,59 @@
+<div class="wrapper top fadeInDown">
+  <div id="formContent" class="large">
+<h3>Eventos</h3>
+<table id="table" class='table table-hover table-mc-light-blue'>
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Inicio</th>
+        <th>Fin</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% _.each(eventos, function(evento) { %>
+    <tr data-id="<%= evento.id %>" data-model="user">
+        <td><%= evento.id %></th>
+        <td><%= evento.nombre %></th>
+        <td><%= evento.inicio %></th>
+        <td><%= evento.fin %></th>
+        <td><a href="/evento/show/<%= evento.id %>" class="btn btn-sm btn-primary">Show</a>
+        <td><a href="/evento/edit/<%= evento.id %>" class="btn btn-sm btn-warning">Edit</a>
+        <td><form action="/horario/destroy/<%= evento.id %>" method="POST">
+                  <input type="hidden" name="_method" value="delete"/>
+                  <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+              </form>
+          </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+</div>
+<a data-open="exampleModal1"><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i></a>
+</div>
+
+<div class="reveal fadeInDown" id="exampleModal1" data-reveal>
+  <form action="/gestionador/eventos/create" method="POST" class="form-signin">
+    <h2 class="form-signin-heading"> Crear evento </h2>
+    <div class="control-group">
+      <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+    </div>
+    <div class="control-group">
+      <input type="date" class="form-control" placeholder="Inicio" name="inicio">
+    </div>
+    <div class="control-group">
+      <input type="date" class="form-control" placeholder="Fin" name="fin">
+    </div>
+    <br/>
+        <input type="hidden" name="user" value="2"/>
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Crear evento"/>
+        <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
+  </form>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

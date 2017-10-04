@@ -44,7 +44,8 @@ module.exports.routes = {
   },
   'get /login': { view: 'user/login' },
   'post /login': 'UserController.processLogin',
-  '/eventos': 'HorarioController.listarEventos'
+  '/gestionador': 'HorarioController.listarEventos',
+  'post /gestionador/eventos/create': 'HorarioController.create'
 
   /***************************************************************************
   *                                                                          *

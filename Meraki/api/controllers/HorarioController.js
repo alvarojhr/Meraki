@@ -8,13 +8,14 @@
 module.exports = {
 	listarEventos: function(req, res)
    {
-    Horario.find().exec(function(err, b)
+    Horario.find().exec(function(err, eventos)
       {
         if(err){
           console.log(err);
         }
-        sails.log('Found "%s"', b);
-        return res.json(b);
+        return res.view('admin/index', {
+	        eventos: eventos
+	      });
       });
    },
    listarMomentos: function(req, res)
@@ -29,5 +30,14 @@ module.exports = {
         sails.log('Found "%s"', found);
           return res.json(found);
         });
-      }
+      },
+		  create: function(req, res) {
+		      Horario.create(req.params.all(), function userCreated(err, user) {
+						if (err) {
+							res.serverError(err);
+		          return res.redirect('/gestionador');
+		        }
+		        res.redirect('/gestionador/evento/' + user.id);
+		      });
+		    }
 };
