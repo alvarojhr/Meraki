@@ -23,6 +23,14 @@ module.exports = {
     },
     user: {
       model: 'user'
+    },
+
+    // Attribute methods
+    getInicio: function (){
+      return this.inicio.toString().substring(0, 15);
+    },
+    getFin: function (){
+      return this.fin.toString().substring(0, 15);
     }
   }
 };

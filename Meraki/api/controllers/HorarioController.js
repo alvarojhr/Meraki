@@ -18,7 +18,7 @@ module.exports = {
 	      });
       });
    },
-   listarMomentos: function(req, res)
+   detalleEvento: function(req, res)
     {
       Horario.findOne({id: req.param("id")}).populate('momentos').exec(function (err, found){
         if (err) {
@@ -32,7 +32,7 @@ module.exports = {
         });
       },
 		  create: function(req, res) {
-		      Horario.create(req.params.all(), function userCreated(err, user) {
+		      Horario.create(req.params.all(), function eventoCreated(err, user) {
 						if (err) {
 							res.serverError(err);
 		          return res.redirect('/gestionador');

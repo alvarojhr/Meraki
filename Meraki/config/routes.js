@@ -32,9 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-//  '/': {
-//    view: 'homepage'
-  //}
+ '/': {
+   view: 'homepage'
+},
   // '*': true,
 
   'user': {
@@ -45,7 +45,9 @@ module.exports.routes = {
   'get /login': { view: 'user/login' },
   'post /login': 'UserController.processLogin',
   '/gestionador': 'HorarioController.listarEventos',
-  'post /gestionador/eventos/create': 'HorarioController.create'
+  'post /gestionador/eventos/create': 'HorarioController.create',
+  'get /gestionador/evento/:id': 'HorarioController.detalleEvento',
+  'get /gestionador/editar/evento/:id': 'HorarioController.editarEvento'
 
   /***************************************************************************
   *                                                                          *
