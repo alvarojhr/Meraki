@@ -20,15 +20,17 @@ module.exports = {
    },
    detalleEvento: function(req, res)
     {
-      Horario.findOne({id: req.param("id")}).populate('momentos').exec(function (err, found){
+      Horario.findOne({id: req.param("id")}).populate('momentos').exec(function (err, evento){
         if (err) {
           return res.serverError(err);
         }
-        if (!found) {
+        if (!evento) {
           return res.notFound('Nop, no hay nada amigos');
         }
-        sails.log('Found "%s"', found);
-          return res.json(found);
+				sails.log(evento);
+					return res.view('admin/detalleEvento', {
+						evento: evento
+					});
         });
       },
 		  create: function(req, res) {

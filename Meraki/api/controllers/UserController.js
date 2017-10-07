@@ -22,7 +22,7 @@ module.exports = {
   },
   processLogin:function (req, res) {
       sails.log(req.params.all());
-      res.redirect('/eventos');
+      res.redirect('/gestionador');
 },
   create: function(req, res) {
       User.create(req.params.all(), function userCreated(err, user) {
