@@ -24,7 +24,7 @@
         <td><a id='<%= evento.id %>' data-open="editarModal" class="btn-editar btn btn-sm btn-warning">Edit</a>
         <td><form action="/horario/destroy/<%= evento.id %>" method="POST">
                   <input type="hidden" name="_method" value="delete"/>
-                  <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                  <input type="submit" class="" value="Delete"/>
                   <input type="hidden" name="_csrf" value="<%= _csrf %>" />
               </form>
           </td>
@@ -94,6 +94,8 @@ $( document ).ready(function() {
 </script>
 <script>
 $(document).ready(function(){
-  $('#table').DataTable();
+  $('#table').DataTable( {
+        "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
+    } );
 });
 </script>
