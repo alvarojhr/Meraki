@@ -24,7 +24,7 @@
         <td><a id='<%= evento.id %>' data-open="editarModal" class="btn-editar btn btn-sm btn-warning">Edit</a>
         <td><form action="/horario/destroy/<%= evento.id %>" method="POST">
                   <input type="hidden" name="_method" value="delete"/>
-                  <input type="submit" class="" value="Delete"/>
+                  <input type="submit" class="btn" value="Delete"/>
                   <input type="hidden" name="_csrf" value="<%= _csrf %>" />
               </form>
           </td>
