@@ -3,7 +3,7 @@
 /* BASIC */
 
 html {
-  background-color: #56baed;
+  background-color: #FFF;
 }
 
 body {
@@ -27,6 +27,10 @@ h2 {
   display:inline-block;
   margin: 40px 8px 10px 8px;
   color: #cccccc;
+}
+
+#logo{
+  width: 10%;
 }
 
 
