@@ -44,6 +44,14 @@ module.exports = {
       collection: 'palabraClave',
       via: 'momentos',
       dominant: true
+    },
+    
+    // Attribute methods
+    getInicio: function (){
+      return this.inicio.toString().substring(0, 15);
+    },
+    getFin: function (){
+      return this.fin.toString().substring(0, 15);
     }
   }
 };

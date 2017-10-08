@@ -52,13 +52,40 @@ h2 {
     padding-top: 50px;
 }
 
+.add-btn{
+  display: block;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.add-btn:hover{
+  cursor: pointer;
+}
+
+select{
+  display: inline-block !important;
+}
+
+.close{
+  display: block !important;
+  position: absolute !important;
+  top: 15px;
+  right: 0px;
+}
+
+.close i.fa-times-circle-o{color: #8c8c8c; font-size: 1.5rem;}
+
+.modal .modal-content {padding: 50px 50px 70px !important;}
+
 .fa-plus-circle{
-  position: absolute;
-      bottom: 20px;
-      right: 20px;
       color: #039be5;
     text-shadow: 2px 4px rgba(4, 155, 229, 0.24);
+    -webkit-transition: color 1.5s; /* Safari */
+    transition: color 1.5s;
 }
+
+.add-btn .fa-plus-circle:hover{  color: #0775ab;}
 
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
@@ -76,7 +103,19 @@ h2 {
 
 #formContent.large{
   max-width: 80%;
-  padding: 20px;
+  padding: 20px 25px 35px;
+  border: 1.5px solid #d4d4d4;
+}
+
+#table_filter.dataTables_filter input[type=search]:not(.browser-default){
+  border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    animation: border 2s;
+}
+
+#formContent.large h3{
+  color: #cccccc;
+margin: 30px 0 -50px;
 }
 
 #formFooter {
