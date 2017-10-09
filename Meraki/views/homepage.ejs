@@ -108,17 +108,23 @@
     </div>
   </footer>
 
-<script>
-  $('input.autocomplete').autocomplete({
-     data: {
-       "Apple": null,
-       "Microsoft": null,
-       "Google": 'https://placehold.it/250x250'
-     },
-     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-     onAutocomplete: function(val) {
-       // Callback function when value is autcompleted.
-     },
-     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+  <script>  $(document).ready(function() {
+      $('input.autocomplete').autocomplete({
+      data: {
+        "Apple": null,
+        "Microsoft": null,
+        "Google": 'http://placehold.it/250x250'
+      },
+      limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+      onAutocomplete: function(val) {
+        // Callback function when value is autcompleted.
+      },
+      minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+    });
    });
-</script>
+  //# sourceURL=pen.js
+  </script>
