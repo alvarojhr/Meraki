@@ -34,12 +34,22 @@ module.exports = {
         });
       },
 		  create: function(req, res) {
-		      Horario.create(req.params.all(), function eventoCreated(err, user) {
+		      Horario.create(req.params.all(), function eventoCreated(err, evento) {
 						if (err) {
 							res.serverError(err);
 		          return res.redirect('/gestionador');
 		        }
-		        res.redirect('/gestionador/evento/' + user.id);
+		        res.redirect('/gestionador/evento/' + evento.id);
 		      });
-		    }
+		    },
+			editarEvento: function(req, res)
+	     {
+	       Horario.update({id: req.param("id")},req.params.all()).exec(function (err, evento){
+					 if (err) {
+						 res.serverError(err);
+						 return res.redirect('/gestionador');
+					 }
+					 res.redirect('/gestionador/evento/' + evento.id);
+	         });
+	       }
 };
