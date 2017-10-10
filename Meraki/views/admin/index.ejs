@@ -66,10 +66,10 @@
       <input type="text" data-cont="nombre" id="name-edit" class="form-control" placeholder="Nombre" name="nombre">
     </div>
     <div class="control-group">
-      <input type="datetime-local" data-cont="inicio" class="form-control" placeholder="Inicio" name="inicio">
+      <input type="datetime-local" data-cont="inicio" id="inicio-edit" class="form-control" placeholder="Inicio" name="inicio">
     </div>
     <div class="control-group">
-      <input type="datetime-local" data-cont="fin" class="form-control" placeholder="Fin" name="fin">
+      <input type="datetime-local" data-cont="fin" id="fin-edit" class="form-control" placeholder="Fin" name="fin">
     </div>
     <br/>
     <input type="submit" class="right btn btn-lg btn-primary btn-block" value="Editar evento"/>
@@ -88,8 +88,10 @@ $( document ).ready(function() {
     $('#form-edit').attr('action', url);
     var nombre = $('tr[data-id="'+id+'"]').find('.nombre').text();
     var inicio = $('tr[data-id="'+id+'"]').find('.inicio').text();
-    var inicio = $('tr[data-id="'+id+'"]').find('.fin').text();
+    var fin = $('tr[data-id="'+id+'"]').find('.fin').text();
     $('#name-edit').val(nombre);
+    $('#inicio-edit').val(inicio);
+    $('#fin-edit').val(fin);
   });
 });
 </script>

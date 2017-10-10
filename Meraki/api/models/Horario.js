@@ -9,13 +9,14 @@ module.exports = {
 
   attributes: {
     nombre: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     inicio: {
-      type: 'date'
+      type: 'datetime'
     },
     fin: {
-      type: 'date'
+      type: 'datetime'
     },
     momentos: {
       collection: 'momento',

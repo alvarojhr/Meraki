@@ -1,3 +1,5 @@
+<div class="wrapper top fadeInDown">
+<div id="formContent" class="large">
   <div class="container">
     <div class="row">
         <div class="col s12">
@@ -7,8 +9,12 @@
             <% } %>
           </ul>
         </div>
-        <% for (var i = 0; i < cantDias; i++) { %>
-            <div id="test1" class="col s12"><%= i %></div>
-        <% } %>
+      </div>
+      <div class="row">
+      <% _.each(evento.momentos, function(momento) { %>
+          <div id="test1" class="col s12"><%= momento.nombre %></div>
+      <% }) %>
       </div>
   </div>
+</div>
+</div>
