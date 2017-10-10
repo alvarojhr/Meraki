@@ -18,6 +18,18 @@ module.exports = {
 	      });
       });
    },
+	 home: function(req, res)
+    {
+     Horario.find().exec(function(err, eventos)
+       {
+         if(err){
+           console.log(err);
+         }
+         return res.view('homepage', {
+ 	        eventos: eventos
+ 	      });
+       });
+    },
    detalleEvento: function(req, res)
     {
       Horario.findOne({id: req.param("id")}).populate('momentos').exec(function (err, evento){

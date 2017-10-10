@@ -32,9 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
- '/': {
-   view: 'homepage'
-},
+ '/': 'HorarioController.home',
   // '*': true,
 
   'user': {
