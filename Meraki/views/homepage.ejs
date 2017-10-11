@@ -122,12 +122,19 @@
       limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
       onAutocomplete: function(val) {
         // Callback function when value is autcompleted.
-        
+        var id;
+        url = $('#autocomplete-input').val();;
+        <% _.each(eventos, function(evento) {%>
+          if(url == "<%= evento.nombre %>"){
+              id = <%= evento.id %>
+            }
+        <% }) %>
+
+
 
         console.log(this)
         alert(this);
-         url = $('#autocomplete-input').val();;
-         $( location ).attr("href", url);
+         $( location ).attr("href", id);
       },
       minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
     });
