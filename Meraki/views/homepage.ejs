@@ -116,12 +116,14 @@
       $('input.autocomplete').autocomplete({
       data: {
         <% _.each(eventos, function(evento) { %>
-         <%= evento.nombre %>:null,
+         "<%= evento.nombre %> " :null ,
         <% }) %>
       },
       limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
       onAutocomplete: function(val) {
         // Callback function when value is autcompleted.
+        
+
         console.log(this)
         alert(this);
          url = $('#autocomplete-input').val();;

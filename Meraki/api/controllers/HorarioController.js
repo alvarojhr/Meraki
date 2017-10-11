@@ -42,7 +42,7 @@ module.exports = {
 				var date1 = new Date(evento.getInicio());
 				var date2 = new Date(evento.getFin());
 				var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-				var cantDias = Math.ceil(timeDiff / (1000 * 3600 * 24));
+				var cantDias = Math.ceil((timeDiff / (1000 * 3600 * 24))+1);
 					return res.view('admin/detalleEvento', {
 						evento: evento,
 						cantDias: cantDias
