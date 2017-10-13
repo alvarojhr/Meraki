@@ -17,11 +17,18 @@ module.exports = {
     ponente: {
       type: 'string'
     },
-    inicio: {
-      type: 'datetime'
+
+    diaInicio: {
+      type: 'string'
     },
-    fin: {
-      type: 'datetime'
+    diaFin: {
+      type: 'string'
+    },
+    horaInicio: {
+      type: 'string'
+    },
+    horaFin: {
+      type: 'string'
     },
     preguntas: {
       type: 'boolean'
@@ -44,14 +51,6 @@ module.exports = {
       collection: 'palabraClave',
       via: 'momentos',
       dominant: true
-    },
-    
-    // Attribute methods
-    getInicio: function (){
-      return this.inicio.toString().substring(0, 15);
-    },
-    getFin: function (){
-      return this.fin.toString().substring(0, 15);
     }
   }
 };

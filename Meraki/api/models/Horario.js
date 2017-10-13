@@ -12,11 +12,17 @@ module.exports = {
       type: 'string',
       required: true
     },
-    inicio: {
-      type: 'datetime'
+    diaInicio: {
+      type: 'string'
     },
-    fin: {
-      type: 'datetime'
+    diaFin: {
+      type: 'string'
+    },
+    horaInicio: {
+      type: 'string'
+    },
+    horaFin: {
+      type: 'string'
     },
     momentos: {
       collection: 'momento',
@@ -24,14 +30,11 @@ module.exports = {
     },
     user: {
       model: 'user'
-    },
+    }
 
     // Attribute methods
-    getInicio: function (){
-      return this.inicio.toString().substring(0, 15);
-    },
-    getFin: function (){
-      return this.fin.toString().substring(0, 15);
-    }
+    //getInicio: function (){
+    //  return this.inicio.toString().substring(0, 15);
+    //}
   }
 };

@@ -18,8 +18,8 @@
     <tr data-id="<%= evento.id %>">
         <td><%= evento.id %></th>
         <td class="nombre"><%= evento.nombre %></th>
-        <td class="inicio"><%= evento.getInicio() %></th>
-        <td class="fin"><%= evento.getFin() %></th>
+        <td class="inicio"><%= evento.diaInicio + ' ' + evento.horaInicio %></th>
+        <td class="fin"><%= evento.diaFin + ' ' + evento.horaFin %></th>
         <td><a href="/gestionador/evento/<%= evento.id %>" class="btn btn-sm btn-primary">Show</a>
         <td><a id='<%= evento.id %>' href="#editarModal" class="modal-trigger btn-editar btn btn-sm btn-warning blue">Edit</a>
         <td><form action="/horario/destroy/<%= evento.id %>" method="POST">
@@ -38,43 +38,69 @@
 
 <div class="modal modal-fixed fadeInDown" id="agregarModal" data-reveal>
     <div class="modal-content">
+      <div class="row">
   <form action="/gestionador/eventos/create" method="POST" class="form-signin">
     <h2 class="form-signin-heading"> Crear evento </h2>
-    <div class="control-group">
-      <input type="text" class="form-control" placeholder="Nombre" name="nombre">
-    </div>
-    <div class="control-group">
-      <input type="datetime-local" class="form-control" placeholder="Inicio" name="inicio">
-    </div>
-    <div class="control-group">
-      <input type="datetime-local" class="form-control" placeholder="Fin" name="fin">
-    </div>
+    <div class="input-field col s12">
+       <input type="text" data-cont="nombre" id="name-edit" type="text" name="nombre">
+       <label for="input_text" class="active">Nombre</label>
+     </div>
+     <div class="input-field col s6">
+        <input type="text" name="diaInicio" data-cont="diaInicio" id="diaInicio-edit" class="datepicker" type="text">
+        <label for="input_text">Dia de inicio</label>
+      </div>
+      <div class="input-field col s6">
+         <input type="text" name="horaInicio" data-cont="horaInicio" id="horaInicio-edit" class="timepicker" type="text">
+         <label for="input_text">Hora</label>
+       </div>
+       <div class="input-field col s6">
+          <input type="text" name="diaFin" data-cont="diaFin" id="diaFin-edit" class="datepicker" type="text">
+          <label for="input_text">Dia de finalización</label>
+        </div>
+        <div class="input-field col s6">
+           <input type="text" name="horaFin" data-cont="horaFin" id="horaFin-edit" class="timepicker" type="text">
+           <label for="input_text">Hora</label>
+         </div>
     <br/>
         <input type="hidden" name="user" value="2"/>
         <input type="submit" class="btn btn-lg btn-primary btn-block right " value="Crear evento"/>
         <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
   </form>
 </div>
+</div>
 <a class="close modal-close waves-effect waves-green btn-flat" href="#!"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
 </div>
 
 <div class="modal modal-fixed fadeInDown" id="editarModal" data-reveal>
     <div class="modal-content">
-  <form action="#" method="POST" class="form-signin" id="form-edit">
-    <h2 class="form-signin-heading"> Editar evento </h2>
-    <div class="control-group">
-      <input type="text" data-cont="nombre" id="name-edit" class="form-control" placeholder="Nombre" name="nombre">
+      <div class="row">
+      <form action="#" method="POST" class="form-signin" id="form-edit">
+        <h2 class="form-signin-heading"> Editar evento </h2>
+        <div class="input-field col s12">
+           <input type="text" data-cont="nombre" id="name-edit" type="text" name="nombre" placeholder=" " class="validate" required>
+            <label for="name-edit">Nombre</label>
+         </div>
+         <div class="input-field col s6">
+            <input type="text" name="diaInicio" data-cont="diaInicio" id="diaInicio-edit" class="datepicker validate" type="text" placeholder=" " required>
+            <label for="diaInicio-edit">Dia de inicio</label>
+          </div>
+          <div class="input-field col s6">
+             <input type="text" name="horaInicio" data-cont="horaInicio" id="horaInicio-edit" class="timepicker validate" type="text" placeholder=" " required>
+             <label for="horaInicio-edit">Hora</label>
+           </div>
+           <div class="input-field col s6">
+              <input type="text" name="diaFin" data-cont="diaFin" id="diaFin-edit" class="datepicker validate" type="text" placeholder=" " required>
+              <label for="diaFin-edi">Dia de finalización</label>
+            </div>
+            <div class="input-field col s6">
+               <input type="text" name="horaFin" data-cont="horaFin" id="horaFin-edit" class="timepicker validate" type="text" placeholder=" " required>
+               <label for="horaFin-edit">Hora</label>
+             </div>
+        <br/>
+        <input type="submit" class="right btn btn-lg btn-primary btn-block" value="Editar evento"/>
+        <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
+      </form>
     </div>
-    <div class="control-group">
-      <input type="datetime-local" data-cont="inicio" id="inicio-edit" class="form-control" placeholder="Inicio" name="inicio">
-    </div>
-    <div class="control-group">
-      <input type="datetime-local" data-cont="fin" id="fin-edit" class="form-control" placeholder="Fin" name="fin">
-    </div>
-    <br/>
-    <input type="submit" class="right btn btn-lg btn-primary btn-block" value="Editar evento"/>
-    <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
-  </form>
 </div>
 <a class="close modal-close waves-effect waves-green btn-flat" href="#!"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
 </div>
@@ -87,11 +113,9 @@ $( document ).ready(function() {
     var url = dir.concat(id);
     $('#form-edit').attr('action', url);
     var nombre = $('tr[data-id="'+id+'"]').find('.nombre').text();
-    var inicio = $('tr[data-id="'+id+'"]').find('.inicio').text();
-    var fin = $('tr[data-id="'+id+'"]').find('.fin').text();
-    $('#name-edit').val(nombre);
-    $('#inicio-edit').val(inicio);
-    $('#fin-edit').val(fin);
+    console.log(nombre);
+    $('#name-edit').val('');
+    $('#name-edit').attr("placeholder", nombre);
   });
 });
 </script>
@@ -105,4 +129,23 @@ $(document).ready(function(){
 <script> $(document).ready(function(){
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15, // Creates a dropdown of 15 years to control year,
+      today: 'Today',
+      clear: 'Clear',
+      close: 'Ok',
+      closeOnSelect: false // Close upon selecting a date,
+    });
+    $('.timepicker').pickatime({
+       default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+       fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+       twelvehour: false, // Use AM/PM or 24-hour format
+       donetext: 'OK', // text for done-button
+       cleartext: 'Clear', // text for clear-button
+       canceltext: 'Cancel', // Text for cancel-button
+       autoclose: false, // automatic close timepicker
+       ampmclickable: true, // make AM PM clickable
+       aftershow: function(){} //Function for after opening timepicker
+     });
   });</script>

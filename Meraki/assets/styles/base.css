@@ -113,6 +113,10 @@ select{
     animation: border 2s;
 }
 
+.picker--opened .picker__holder{
+  background: none !important;
+}
+
 #formContent.large h3{
   color: #cccccc;
 margin: 30px 0 -50px;
