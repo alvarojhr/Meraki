@@ -18,8 +18,14 @@
     <tr data-id="<%= evento.id %>">
         <td><%= evento.id %></th>
         <td class="nombre"><%= evento.nombre %></th>
-        <td class="inicio"><%= evento.diaInicio + ' ' + evento.horaInicio %></th>
-        <td class="fin"><%= evento.diaFin + ' ' + evento.horaFin %></th>
+        <td>
+          <span class="dia-inicio"><%= evento.diaInicio %></span>
+          <span class="hora-inicio"><%= evento.horaInicio %></span>
+        </th>
+        <td class="fin">
+          <span class="dia-fin"><%= evento.diaFin %></span>
+          <span class="hora-fin"><%= evento.horaFin %></span>
+        </th>
         <td><a href="/gestionador/evento/<%= evento.id %>" class="btn btn-sm btn-primary">Show</a>
         <td><a id='<%= evento.id %>' href="#editarModal" class="modal-trigger btn-editar btn btn-sm btn-warning blue">Edit</a>
         <td><form action="/horario/destroy/<%= evento.id %>" method="POST">
@@ -42,23 +48,23 @@
   <form action="/gestionador/eventos/create" method="POST" class="form-signin">
     <h2 class="form-signin-heading"> Crear evento </h2>
     <div class="input-field col s12">
-       <input type="text" data-cont="nombre" id="name-edit" type="text" name="nombre">
+       <input type="text" data-cont="nombre" type="text" name="nombre">
        <label for="input_text" class="active">Nombre</label>
      </div>
-     <div class="input-field col s6">
-        <input type="text" name="diaInicio" data-cont="diaInicio" id="diaInicio-edit" class="datepicker" type="text">
+     <div class="input-field col s7">
+        <input type="text" name="diaInicio" data-cont="diaInicio" class="datepicker" type="text">
         <label for="input_text">Dia de inicio</label>
       </div>
-      <div class="input-field col s6">
-         <input type="text" name="horaInicio" data-cont="horaInicio" id="horaInicio-edit" class="timepicker" type="text">
+      <div class="input-field col s5">
+         <input type="text" name="horaInicio" data-cont="horaInicio" class="timepicker" type="text">
          <label for="input_text">Hora</label>
        </div>
-       <div class="input-field col s6">
-          <input type="text" name="diaFin" data-cont="diaFin" id="diaFin-edit" class="datepicker" type="text">
+       <div class="input-field col s7">
+          <input type="text" name="diaFin" data-cont="diaFin" class="datepicker" type="text">
           <label for="input_text">Dia de finalización</label>
         </div>
-        <div class="input-field col s6">
-           <input type="text" name="horaFin" data-cont="horaFin" id="horaFin-edit" class="timepicker" type="text">
+        <div class="input-field col s5">
+           <input type="text" name="horaFin" data-cont="horaFin" class="timepicker" type="text">
            <label for="input_text">Hora</label>
          </div>
     <br/>
@@ -81,19 +87,19 @@
            </input>
             <label for="name-edit">Nombre</label>
          </div>
-         <div class="input-field col s6">
+         <div class="input-field col s7">
             <input type="text" name="diaInicio" data-cont="diaInicio" id="diaInicio-edit" class="datepicker validate" type="text" placeholder=" " required>
             <label for="diaInicio-edit">Dia de inicio</label>
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s5">
              <input type="text" name="horaInicio" data-cont="horaInicio" id="horaInicio-edit" class="timepicker validate" type="text" placeholder=" " required>
              <label for="horaInicio-edit">Hora</label>
            </div>
-           <div class="input-field col s6">
+           <div class="input-field col s7">
               <input type="text" name="diaFin" data-cont="diaFin" id="diaFin-edit" class="datepicker validate" type="text" placeholder=" " required>
               <label for="diaFin-edi">Dia de finalización</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s5">
                <input type="text" name="horaFin" data-cont="horaFin" id="horaFin-edit" class="timepicker validate" type="text" placeholder=" " required>
                <label for="horaFin-edit">Hora</label>
              </div>
@@ -114,10 +120,16 @@ $( document ).ready(function() {
     var url = dir.concat(id);
     $('#form-edit').attr('action', url);
     var nombre = $('tr[data-id="'+id+'"]').find('.nombre').text();
+    var diaInicio = $('tr[data-id="'+id+'"]').find('.dia-inicio').text();
+    var horaInicio = $('tr[data-id="'+id+'"]').find('.hora-inicio').text();
+    var diaFin = $('tr[data-id="'+id+'"]').find('.dia-fin').text();
+    var horaFin = $('tr[data-id="'+id+'"]').find('.hora-fin').text();
     console.log(nombre);
     $('#name-edit').val(nombre);
-    $('#name-edit').text(nombre);
-    $('#name-edit').attr("placeholder", nombre);
+    $('#diaInicio-edit').val(diaInicio);
+    $('#horaInicio-edit').val(horaInicio);
+    $('#diaFin-edit').val(diaFin);
+    $('#horaFin-edit').val(horaFin);
   });
 });
 </script>
