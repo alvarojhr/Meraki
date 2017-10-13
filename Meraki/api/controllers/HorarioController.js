@@ -39,17 +39,40 @@ module.exports = {
         if (!evento) {
           return res.notFound('Nop, no hay nada amigos');
         }
-				var date1 = new Date(evento.getInicio());
-				var date2 = new Date(evento.getFin());
+				var date1 = new Date(evento.diaInicio);
+				var date2 = new Date(evento.diaFin);
 				var timeDiff = Math.abs(date2.getTime() - date1.getTime());
 				var cantDias = Math.ceil((timeDiff / (1000 * 3600 * 24))+1);
-
+				var dirMomentos = {};
+				var momentos2 = [];
 				_.each(evento.momentos, function(momento) {
-					sails.log(momento);
-	      });
+					momentos2.push(momento);
+				});
+				for (var i = 0; i < cantDias; i++) {
+					var aux = []
+					if(momentos2.length > 0){
+						_.each(momentos2, function(momento) {
+
+							var date2 = new Date(momento.diaInicio);
+							var diff = Math.ceil((Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24)));
+
+							sails.log(diff);
+							sails.log(i);
+							if(diff == i){
+								aux.push(momento);
+								 momentos2.splice(momentos2.indexOf(momento), 1);
+							}
+
+			      });
+					};
+						dirMomentos[i] = aux;
+						sails.log(dirMomentos);
+				};
+
 					return res.view('admin/detalleEvento', {
 						evento: evento,
-						cantDias: cantDias
+						cantDias: cantDias,
+						dirMomentos: dirMomentos
 					});
         });
       },

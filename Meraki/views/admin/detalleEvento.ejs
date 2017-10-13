@@ -11,9 +11,17 @@
         </div>
       </div>
       <div class="row">
-      <% _.each(evento.momentos, function(momento) { %>
-          <div id="test1" class="col s12"><%= momento.nombre %></div>
-      <% }) %>
+      <% for (var i = 0; i < cantDias; i++) { %>
+          <div id="test<%= i %>" class="col s12">
+              <% _.each(dirMomentos[i], function(momento) { %>
+                      <%= momento.nombre %>
+                      <%= momento.horaInicio %>
+                      <%= momento.horaFin %>
+                      <small><%= momento.diaInicio %></small>
+
+              <% }) %>
+          </div>
+      <% } %>
       </div>
   </div>
 </div>
