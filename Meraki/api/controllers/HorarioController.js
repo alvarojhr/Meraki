@@ -43,6 +43,10 @@ module.exports = {
 				var date2 = new Date(evento.getFin());
 				var timeDiff = Math.abs(date2.getTime() - date1.getTime());
 				var cantDias = Math.ceil((timeDiff / (1000 * 3600 * 24))+1);
+
+				_.each(evento.momentos, function(momento) {
+					sails.log(momento);
+	      });
 					return res.view('admin/detalleEvento', {
 						evento: evento,
 						cantDias: cantDias
@@ -55,7 +59,7 @@ module.exports = {
 							res.serverError(err);
 		          return res.redirect('/gestionador');
 		        }
-		        res.redirect('/gestionador/evento/' + evento.id);
+		        res.redirect('/gestionador/evento/' + this.id);
 		      });
 		    },
 			editarEvento: function(req, res)
@@ -65,7 +69,9 @@ module.exports = {
 						 res.serverError(err);
 						 return res.redirect('/gestionador');
 					 }
-					 res.redirect('/gestionador/evento/' + evento.id);
+					 sails.log(evento.id);
+					 sails.log(evento.nombre);
+					 res.redirect('/gestionador/evento/' + this.id);
 	         });
 	       }
 };

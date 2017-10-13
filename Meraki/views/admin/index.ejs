@@ -78,6 +78,7 @@
         <h2 class="form-signin-heading"> Editar evento </h2>
         <div class="input-field col s12">
            <input type="text" data-cont="nombre" id="name-edit" type="text" name="nombre" placeholder=" " class="validate" required>
+           </input>
             <label for="name-edit">Nombre</label>
          </div>
          <div class="input-field col s6">
@@ -114,7 +115,8 @@ $( document ).ready(function() {
     $('#form-edit').attr('action', url);
     var nombre = $('tr[data-id="'+id+'"]').find('.nombre').text();
     console.log(nombre);
-    $('#name-edit').val('');
+    $('#name-edit').val(nombre);
+    $('#name-edit').text(nombre);
     $('#name-edit').attr("placeholder", nombre);
   });
 });
