@@ -123,17 +123,10 @@
       onAutocomplete: function(val) {
         // Callback function when value is autcompleted.
         var id;
+        var direc;
         url = $('#autocomplete-input').val();;
-        <% _.each(eventos, function(evento) {%>
-          if(url == "<%= evento.nombre %>"){
-              id = <%= evento.id %>
-            }
-        <% }) %>
 
 
-
-        console.log(this)
-        alert(this);
          $( location ).attr("href", id);
       },
       minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.

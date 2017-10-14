@@ -10,12 +10,11 @@ module.exports = {
    {
     Horario.find().exec(function(err, eventos)
       {
+
         if(err){
           console.log(err);
         }
-        return res.view('admin/index', {
-	        eventos: eventos
-	      });
+        return res.view('admin/index', {eventos: eventos});
       });
    },
 	 home: function(req, res)
@@ -25,9 +24,16 @@ module.exports = {
          if(err){
            console.log(err);
          }
-         return res.view('homepage', {
- 	        eventos: eventos
- 	      });
+				  //{eventos:eventos[1].nombre};
+					var dirid = {}
+				 sails.log(eventos);
+				 for (var i = 0; i < eventos.length; i++) {
+					 var id = eventos[i].id;
+					 var nombre = eventos[i].nombre;
+					 dirid[nombre] = id;
+				 };
+				 sails.log(dirid);
+         return res.view('homepage', {eventos: eventos,dirid:dirid});
        });
     },
    detalleEvento: function(req, res)
