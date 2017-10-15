@@ -1,6 +1,6 @@
 <div class="wrapper top fadeInDown">
 <div id="formContent" class="large">
-  <div class="container">
+  <div class="container listMoments">
     <div class="row">
         <div class="col s12">
           <ul class="tabs">
@@ -13,16 +13,102 @@
       <div class="row">
       <% for (var i = 0; i < cantDias; i++) { %>
           <div id="test<%= i %>" class="col s12">
+            <span class="span-fecha"><%= dirMomentos[i][0].diaInicio %></span>
               <% _.each(dirMomentos[i], function(momento) { %>
-                      <%= momento.nombre %>
-                      <%= momento.horaInicio %>
-                      <%= momento.horaFin %>
-                      <small><%= momento.diaInicio %></small>
-
+                <div class="col s12 contMoment">
+                  <div class="col m6 s12">
+                    <div class="col s8">
+                      <p><%= momento.nombre %></p>
+                    </div>
+                    <div class="col s4">
+                      <p class="left-align"> <i class="fa fa-play-circle-o light-green-text text-lighten-1" aria-hidden="true"></i> <%= momento.horaInicio %></p>
+                    </div>
+                    <div class="col s4 offset-s8">
+                      <p class="left-align"><i class="fa fa-pause-circle-o red-text text-lighten-1" aria-hidden="true"></i> <%= momento.horaFin %></p>
+                    </div>
+                  </div>
+                  <div class="col m6 s12">
+                    <a href="#" class="btn btn-sm btn-primary">Show</a>
+                    <a href="#" class="modal-trigger btn-editar btn btn-sm btn-warning blue">Edit</a>
+                    <form action="#" method="POST">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <input type="submit" class="btn red" value="Delete"/>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    </form>
+                  </div>
+                  </div>
               <% }) %>
           </div>
       <% } %>
       </div>
   </div>
 </div>
+
+<a href="#agregarModal" class="add-btn modal-trigger"><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i></a>
 </div>
+
+<div class="modal modal-fixed fadeInDown" id="agregarModal" data-reveal>
+    <div class="modal-content">
+      <div class="row">
+    <form action="/gestionador/eventos/create" method="POST" class="form-signin">
+      <h2 class="form-signin-heading"> Crear evento </h2>
+       <div class="input-field col s12 m6">
+         <input type="text" data-cont="nombre" type="text" name="nombre">
+         <label for="input_text" class="active">Nombre</label>
+       </div>
+       <div class="input-field col s12 m6">
+         <input type="text" data-cont="nombre" type="text" name="nombre">
+         <label for="input_text" class="active">Ponente(s)</label>
+       </div>
+       <div class="input-field col s7">
+          <input type="text" name="diaInicio" data-cont="diaInicio" class="datepicker" type="text">
+          <label for="input_text">Dia de inicio</label>
+        </div>
+        <div class="input-field col s5">
+           <input type="text" name="horaInicio" data-cont="horaInicio" class="timepicker" type="text">
+           <label for="input_text">Hora</label>
+         </div>
+         <div class="input-field col s7">
+            <input type="text" name="diaFin" data-cont="diaFin" class="datepicker" type="text">
+            <label for="input_text">Dia de finalización</label>
+          </div>
+          <div class="input-field col s5">
+             <input type="text" name="horaFin" data-cont="horaFin" class="timepicker" type="text">
+             <label for="input_text">Hora</label>
+           </div>
+      <br/>
+          <input type="hidden" name="horario" value="<%= evento.id %>"/>
+          <input type="submit" class="btn btn-lg btn-primary btn-block right " value="Crear evento"/>
+          <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
+    </form>
+  </div>
+</div>
+<a class="close modal-close waves-effect waves-green btn-flat" href="#!"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.modal').modal();
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15, // Creates a dropdown of 15 years to control year,
+      today: 'Today',
+      clear: 'Clear',
+      close: 'Ok',
+      closeOnSelect: true,
+      minDate: new Date("<%= evento.diaInicio %>"),
+      maxDate: new Date("<%= evento.diaFin %>")
+    });
+    $('.timepicker').pickatime({
+       default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+       fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+       twelvehour: false, // Use AM/PM or 24-hour format
+       donetext: 'OK', // text for done-button
+       cleartext: 'Clear', // text for clear-button
+       canceltext: 'Cancel', // Text for cancel-button
+       autoclose: false, // automatic close timepicker
+       ampmclickable: true, // make AM PM clickable
+       aftershow: function(){} //Function for after opening timepicker
+     });
+  });
+</script>

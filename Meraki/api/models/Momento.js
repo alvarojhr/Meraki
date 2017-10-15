@@ -17,7 +17,6 @@ module.exports = {
     ponente: {
       type: 'string'
     },
-
     diaInicio: {
       type: 'string'
     },
@@ -37,10 +36,12 @@ module.exports = {
       type: 'boolean'
     },
     score: {
-      type: 'integer'
+      type: 'integer',
+      defaultsTo: '0'
     },
     cant_votos: {
-      type: 'integer'
+      type: 'integer',
+      defaultsTo: '0'
     },
     preguntas: {
       collection: 'pregunta',

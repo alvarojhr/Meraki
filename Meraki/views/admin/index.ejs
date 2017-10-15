@@ -136,11 +136,13 @@ $( document ).ready(function() {
 <script>
 $(document).ready(function(){
   $('#table').DataTable( {
-        "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
+        "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        responsive: true
     } );
 });
 </script>
-<script> $(document).ready(function(){
+<script>
+$(document).ready(function(){
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
     $('.datepicker').pickadate({
@@ -149,7 +151,7 @@ $(document).ready(function(){
       today: 'Today',
       clear: 'Clear',
       close: 'Ok',
-      closeOnSelect: false // Close upon selecting a date,
+      closeOnSelect: true // Close upon selecting a date,
     });
     $('.timepicker').pickatime({
        default: 'now', // Set default time: 'now', '1:30AM', '16:30'
@@ -162,4 +164,5 @@ $(document).ready(function(){
        ampmclickable: true, // make AM PM clickable
        aftershow: function(){} //Function for after opening timepicker
      });
-  });</script>
+  });
+  </script>
