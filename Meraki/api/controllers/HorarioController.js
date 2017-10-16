@@ -25,14 +25,14 @@ module.exports = {
            console.log(err);
          }
 				  //{eventos:eventos[1].nombre};
-					var dirid = {}
+				 var dirid = []
 				 sails.log(eventos);
 				 for (var i = 0; i < eventos.length; i++) {
-					 var id = eventos[i].id;
-					 var nombre = eventos[i].nombre;
-					 dirid[nombre] = id;
+					 dirid.push([eventos[i].nombre,eventos[i].id]);
+
 				 };
 				 sails.log(dirid);
+
          return res.view('homepage', {eventos: eventos,dirid:dirid});
        });
     },
