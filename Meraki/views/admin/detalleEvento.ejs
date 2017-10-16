@@ -13,6 +13,7 @@
       <div class="row">
       <% for (var i = 0; i < cantDias; i++) { %>
           <div id="test<%= i %>" class="col s12">
+            <% if( dirMomentos[i][0] != 0){ %>
             <span class="span-fecha"><%= dirMomentos[i][0].diaInicio %></span>
               <% _.each(dirMomentos[i], function(momento) { %>
                 <div class="col s12 contMoment">
@@ -39,6 +40,7 @@
                   </div>
               <% }) %>
           </div>
+      <% } %>
       <% } %>
       </div>
   </div>

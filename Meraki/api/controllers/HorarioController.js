@@ -61,18 +61,16 @@ module.exports = {
 
 							var date2 = new Date(momento.diaInicio);
 							var diff = Math.ceil((Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24)));
-
-							sails.log(diff);
-							sails.log(i);
 							if(diff == i){
 								aux.push(momento);
 								 momentos2.splice(momentos2.indexOf(momento), 1);
 							}
-
 			      });
+					}
+					else{
+						aux = [0];
 					};
 						dirMomentos[i] = aux;
-						sails.log(dirMomentos);
 				};
 
 					return res.view('admin/detalleEvento', {
@@ -88,7 +86,7 @@ module.exports = {
 							res.serverError(err);
 		          return res.redirect('/gestionador');
 		        }
-		        res.redirect('/gestionador/evento/' + this.id);
+		        res.redirect('/gestionador/evento/' + evento.id);
 		      });
 		    },
 			editarEvento: function(req, res)
@@ -100,7 +98,7 @@ module.exports = {
 					 }
 					 sails.log(evento.id);
 					 sails.log(evento.nombre);
-					 res.redirect('/gestionador/evento/' + this.id);
+					 res.redirect('/gestionador/evento/' + evento.id);
 	         });
 	       }
 };
