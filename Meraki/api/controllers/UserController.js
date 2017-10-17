@@ -13,7 +13,7 @@ module.exports = {
     User.find(function foundUser (err, users) {
 			if (err) {
           res.serverError(err);
-					return res.redirect('/user/new');
+					return res.redirect('/signup');
         }
       res.view({
         users: users

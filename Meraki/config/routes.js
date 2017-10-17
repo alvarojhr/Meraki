@@ -35,13 +35,11 @@ module.exports.routes = {
  '/': 'HorarioController.home',
   // '*': true,
 
-  'user': {
-    'new': true,
-    index: 'sessionAuth',
-    '*': true
-  },
   'get /login': { view: 'user/login' },
-  'post /login': 'UserController.processLogin',
+  'post /login': 'AuthController.login',
+  '/logout': 'AuthController.logout',
+  'get /signup': {view: 'user/new'},
+
   '/gestionador': 'HorarioController.listarEventos',
   'post /gestionador/eventos/create': 'HorarioController.create',
   'get /gestionador/evento/:id': 'HorarioController.detalleEvento',

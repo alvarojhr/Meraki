@@ -5,37 +5,37 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
-module.exports = {
+ var bcrypt = require('bcryptjs');
 
-  attributes: {
-    name: {
-      type: 'string'
-    },
-    encryptedPassword: {
-      type: 'string',
-    },
-    staff: {
-      type : "boolean",
-     defaultsTo : false
-    },
-    email: {
-      type: 'email',
-      required: true,
-      unique: true
-    },
-    horarios: {
-      collection: 'horario',
-      via: 'user'
-    },
-    // Este método es para evitar pasar toda la información del modelo
-   // Evitamos pasar los siguientes parámetros: password, confirmation, encryptedpassword y _csrf.
-   toJSON: function() {
-     var obj = this.toObject();
-     delete obj.password;
-     delete obj.confirmation;
-     delete obj.encryptedPassword;
-     delete obj._csrf;
-     return obj;
-   }
-  }
-};
+ module.exports = {
+     attributes: {
+         email: {
+             type: 'email',
+             required: true,
+             unique: true
+         },
+         password: {
+             type: 'string',
+             minLength: 6,
+             required: true
+         },
+         toJSON: function() {
+             var obj = this.toObject();
+             delete obj.password;
+             return obj;
+         }
+     },
+     beforeCreate: function(user, cb) {
+         bcrypt.genSalt(10, function(err, salt) {
+             bcrypt.hash(user.password, salt, function(err, hash) {
+                 if (err) {
+                     console.log(err);
+                     cb(err);
+                 } else {
+                     user.password = hash;
+                     cb();
+                 }
+             });
+         });
+     }
+ };
