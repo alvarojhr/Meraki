@@ -32,7 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
- '/': 'HorarioController.home',
+ '/': 'PublicoController.home',
   // '*': true,
 
   'get /login': { view: 'user/login' },

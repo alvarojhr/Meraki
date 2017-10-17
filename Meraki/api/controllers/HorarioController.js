@@ -17,25 +17,6 @@ module.exports = {
         return res.view('admin/index', {eventos: eventos});
       });
    },
-	 home: function(req, res)
-    {
-     Horario.find().exec(function(err, eventos)
-       {
-         if(err){
-           console.log(err);
-         }
-				  //{eventos:eventos[1].nombre};
-				 var dirid = []
-				 sails.log(eventos);
-				 for (var i = 0; i < eventos.length; i++) {
-					 dirid.push([eventos[i].nombre,eventos[i].id]);
-
-				 };
-				 sails.log(dirid);
-
-         return res.view('homepage', {eventos: eventos,dirid:dirid});
-       });
-    },
    detalleEvento: function(req, res)
     {
       Horario.findOne({id: req.param("id")}).populate('momentos').exec(function (err, evento){
