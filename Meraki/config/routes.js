@@ -45,7 +45,8 @@ module.exports.routes = {
   '/gestionador': 'HorarioController.listarEventos',
   'post /gestionador/eventos/create': 'HorarioController.create',
   'get /gestionador/evento/:id': 'HorarioController.detalleEvento',
-  'post /gestionador/editar/evento/:id': 'HorarioController.editarEvento'
+  'post /gestionador/editar/evento/:id': 'HorarioController.editarEvento',
+  'post /gestionador/momento/create': 'MomentoController.create'
 
   /***************************************************************************
   *                                                                          *

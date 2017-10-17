@@ -52,35 +52,47 @@
 <div class="modal modal-fixed fadeInDown" id="agregarModal" data-reveal>
     <div class="modal-content">
       <div class="row">
-    <form action="/gestionador/eventos/create" method="POST" class="form-signin">
+    <form action="/gestionador/momento/create" method="POST" class="form-signin">
       <h2 class="form-signin-heading"> Crear evento </h2>
        <div class="input-field col s12 m6">
-         <input type="text" data-cont="nombre" type="text" name="nombre">
-         <label for="input_text" class="active">Nombre</label>
+         <input id="name-create" type="text" data-cont="nombre" type="text" name="nombre">
+         <label for="name-create" class="active">Nombre</label>
        </div>
        <div class="input-field col s12 m6">
-         <input type="text" data-cont="nombre" type="text" name="nombre">
-         <label for="input_text" class="active">Ponente(s)</label>
+         <input id="ponente-create" type="text" data-cont="nombre" type="text" name="ponente">
+         <label for="ponente-create" class="active">Ponente(s)</label>
        </div>
        <div class="input-field col s7">
-          <input type="text" name="diaInicio" data-cont="diaInicio" class="datepicker" type="text">
-          <label for="input_text">Dia de inicio</label>
+          <input id="diaInicio-create" type="text" name="diaInicio" data-cont="diaInicio" class="datepicker" type="text">
+          <label for="diaInicio-create">Dia de inicio</label>
         </div>
         <div class="input-field col s5">
-           <input type="text" name="horaInicio" data-cont="horaInicio" class="timepicker" type="text">
-           <label for="input_text">Hora</label>
+           <input id="horaInicio-create" type="text" name="horaInicio" data-cont="horaInicio" class="timepicker" type="text">
+           <label for="horaInicio-create">Hora</label>
          </div>
          <div class="input-field col s7">
-            <input type="text" name="diaFin" data-cont="diaFin" class="datepicker" type="text">
-            <label for="input_text">Dia de finalización</label>
+            <input id="diaFin-create" type="text" name="diaFin" data-cont="diaFin" class="datepicker" type="text">
+            <label for="diaFin-create">Dia de finalización</label>
           </div>
           <div class="input-field col s5">
-             <input type="text" name="horaFin" data-cont="horaFin" class="timepicker" type="text">
-             <label for="input_text">Hora</label>
+             <input id="horaFin-create" type="text" name="horaFin" data-cont="horaFin" class="timepicker" type="text">
+             <label for="horaFin-create">Hora</label>
+           </div>
+           <div class="col s6">
+              <p>
+                <input type="checkbox" class="filled-in" id="preg-create" name="preguntar" checked="checked" value="true" />
+                <label for="preg-create">Preguntas</label>
+              </p>
+           </div>
+           <div class="col s6">
+             <p>
+               <input type="checkbox" class="filled-in" id="puntaje-create" name="puntaje" checked="checked" value="true" />
+               <label for="puntaje-create">Puntaje</label>
+             </p>
            </div>
       <br/>
           <input type="hidden" name="horario" value="<%= evento.id %>"/>
-          <input type="submit" class="btn btn-lg btn-primary btn-block right " value="Crear evento"/>
+          <input type="submit" class="btn btn-lg btn-primary btn-block right " value="Crear momento"/>
           <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
     </form>
   </div>

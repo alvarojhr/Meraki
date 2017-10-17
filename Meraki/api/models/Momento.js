@@ -29,7 +29,7 @@ module.exports = {
     horaFin: {
       type: 'string'
     },
-    preguntas: {
+    preguntar: {
       type: 'boolean'
     },
     puntaje: {
