@@ -1,0 +1,60 @@
+
+<style>
+
+	body {
+		margin: 40px 10px !important;
+		padding: 0 !important;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif !important;
+		font-size: 14px !important;
+	}
+
+	#calendar {
+		max-width: 900px !important;
+		margin: 0 auto !important;
+	}
+
+</style>
+	<div id='calendar'></div>
+<script>
+
+	$(document).ready(function() {
+
+		$('#calendar').fullCalendar({
+			defaultDate: '2017-10-12',
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+          <% _.each(events, function(evento) { %>
+       {
+         title: '<%= evento.nombre %> ',
+         start: '<%= evento.fechaInicio %>',
+         end: '<%= evento.fechaFin  %>',
+       },
+        <% }) %>
+
+				{
+					title: 'Long Event',
+					start: '2017-10-07',
+					end: '2017-10-10'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2017-10-16T16:00:00'
+				},
+				{
+					title: 'Conference',
+					start: '2017-10-11',
+					end: '2017-10-13'
+				},
+				{
+					title: 'Click for Google',
+					url: 'http://google.com/',
+					start: '2017-10-28'
+				}
+			]
+		});
+
+	});
+
+</script>
