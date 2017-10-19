@@ -39,7 +39,7 @@ module.exports = {
 					var aux = []
 					if(momentos2.length > 0){
 						_.each(momentos2, function(momento) {
-
+							console.log(momento);
 							var date2 = new Date(momento.diaInicio);
 							var diff = Math.ceil((Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24)));
 							if(diff == i){
@@ -47,12 +47,16 @@ module.exports = {
 								 momentos2.splice(momentos2.indexOf(momento), 1);
 							}
 			      });
+						if (aux.length == 0){
+							aux = [0];
+						}
 					}
 					else{
 						aux = [0];
 					};
 						dirMomentos[i] = aux;
 				};
+				console.log(dirMomentos);
 
 					return res.view('admin/detalleEvento', {
 						evento: evento,

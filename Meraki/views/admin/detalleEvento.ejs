@@ -37,10 +37,11 @@
                         <input type="hidden" name="_csrf" value="<%= _csrf %>" />
                     </form>
                   </div>
-                  </div>
+                </div>
               <% }) %>
+
+          <% } %>
           </div>
-      <% } %>
       <% } %>
       </div>
   </div>
@@ -52,8 +53,8 @@
 <div class="modal modal-fixed fadeInDown" id="agregarModal" data-reveal>
     <div class="modal-content">
       <div class="row">
+        <h2 class="form-signin-heading"> Crear evento </h2>
     <form action="/gestionador/momento/create" method="POST" class="form-signin">
-      <h2 class="form-signin-heading"> Crear evento </h2>
        <div class="input-field col s12 m6">
          <input id="name-create" type="text" data-cont="nombre" type="text" name="nombre">
          <label for="name-create" class="active">Nombre</label>
