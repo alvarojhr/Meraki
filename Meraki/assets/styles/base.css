@@ -38,12 +38,11 @@ h2 {
 .left {
   z-index: 1000;
   position: fixed;
-  padding: 10px;
+  padding: 30px;
   top: 0;
   left: 0;
   height: 100%;
   width: 50px;
-  background: darkslategray;
   transition: width ease .5s;
   /* Sass/Scss only:
     Using a selector (.open-nav) with an "&" afterward is actually selecting
@@ -67,10 +66,12 @@ body.open-nav .left {
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color ease .35s, border-bottom-color ease .35s;
+  font-size: 40px;
+  color: #039be5;
+text-shadow: 2px 4px rgba(4, 155, 229, 0.24);
 }
 .left a:hover {
-  color: white;
-  border-bottom-color: white;
+  color: #0775ab;
 }
 .left a.open {
   font-size: 1.75rem;
