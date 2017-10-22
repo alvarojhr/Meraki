@@ -35,6 +35,58 @@ h2 {
 
 /* STRUCTURE */
 
+.left {
+  z-index: 1000;
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50px;
+  background: darkslategray;
+  transition: width ease .5s;
+  /* Sass/Scss only:
+    Using a selector (.open-nav) with an "&" afterward is actually selecting
+  any parent selector. For instance, this outputs "body.open-nav .left { ... }"
+  More info: http://thesassway.com/intermediate/referencing-parent-selectors-using-ampersand
+  */
+}
+body.open-nav .left {
+  width: 250px;
+}
+.left ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.left ul li {
+  margin-bottom: 25px;
+}
+.left a {
+  color: #182828;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color ease .35s, border-bottom-color ease .35s;
+}
+.left a:hover {
+  color: white;
+  border-bottom-color: white;
+}
+.left a.open {
+  font-size: 1.75rem;
+  font-weight: 700;
+  border: 0;
+}
+
+.right {
+  position: relative;
+  margin-left: 75px;
+  transition: margin-left ease .5s;
+}
+body.open-nav .right {
+  margin-left: 275px;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
