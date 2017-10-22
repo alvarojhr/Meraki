@@ -12,7 +12,8 @@ module.exports = {
 					res.serverError(err);
 					return res.redirect('/gestionador');
 				}
-				res.redirect('/gestionador/evento/' + momento.evento.id);
+				console.log(momento);
+				res.redirect('/gestionador/evento/' + momento.horario);
 			});
 		},
 };

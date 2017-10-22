@@ -28,18 +28,8 @@
                       <p class="left-align"><i class="fa fa-pause-circle-o red-text text-lighten-1" aria-hidden="true"></i> <%= momento.horaFin %></p>
                     </div>
                   </div>
-                  <div class="col m6 s12">
-                    <a href="#" class="btn btn-sm btn-primary">Show</a>
-                    <a href="#" class="modal-trigger btn-editar btn btn-sm btn-warning blue">Edit</a>
-                    <form action="#" method="POST">
-                        <input type="hidden" name="_method" value="delete"/>
-                        <input type="submit" class="btn red" value="Delete"/>
-                        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-                    </form>
-                  </div>
                 </div>
               <% }) %>
-
           <% } %>
           </div>
       <% } %>
@@ -47,7 +37,7 @@
   </div>
 </div>
 
-<a href="#agregarModal" class="add-btn modal-trigger"><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i></a>
+
 </div>
 
 <div class="modal modal-fixed fadeInDown" id="agregarModal" data-reveal>
