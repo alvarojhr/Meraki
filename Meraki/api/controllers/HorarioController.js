@@ -39,13 +39,14 @@ module.exports = {
 					var aux = []
 					if(momentos2.length > 0){
 						for(var j = 0; j <momentos2.length;j++) {
-							momento = momentos2[i];
+							momento = momentos2[j];
+							console.log("Imprimir momentos2 en "+ j);
+							console.log(momentos2);
 							var date2 = new Date(momentos2[j]["diaInicio"]);
 							var diff = Math.ceil((Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24)));
 							if(diff == i){
-								console.log(momento);
 								aux.push(momento);
-								 momentos2.splice(momentos2.indexOf(momento), 1);
+								 //momentos2.splice(momentos2.indexOf(momento), 1);
 							}
 			      };
 						if (aux.length == 0){
