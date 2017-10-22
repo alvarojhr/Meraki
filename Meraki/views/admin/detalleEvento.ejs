@@ -16,21 +16,26 @@
             <% if( dirMomentos[i][0] != 0){ %>
             <span class="span-fecha"><%= dirMomentos[i][0].diaInicio %></span>
               <% _.each(dirMomentos[i], function(momento) { %>
-                <div class="col s12 contMoment">
+                <div data-id="<%= momento.id %>" class="col s12 contMoment">
                   <div class="col m6 s12">
                     <div class="col s8">
-                      <p><%= momento.nombre %></p>
+                      <p id="nombre" ><%= momento.nombre %></p>
                     </div>
                     <div class="col s4">
-                      <p class="left-align"> <i class="fa fa-play-circle-o light-green-text text-lighten-1" aria-hidden="true"></i> <%= momento.horaInicio %></p>
+                      <i class="fa fa-play-circle-o light-green-text text-lighten-1" aria-hidden="true"></i><p id="horaInicio" style="padding-left:5px;display: inline-block;" class="left-align">  <%= momento.horaInicio %></p>
                     </div>
-                    <div class="col s4 offset-s8">
-                      <p class="left-align"><i class="fa fa-pause-circle-o red-text text-lighten-1" aria-hidden="true"></i> <%= momento.horaFin %></p>
+                    <div class="col s7 offset-s1">
+                      <p id="ponente" ><%= momento.ponente %></p>
                     </div>
+                    <div class="col s4">
+                      <i class="fa fa-pause-circle-o red-text text-lighten-1" aria-hidden="true"></i><p id="horaFin" style="padding-left:5px;display: inline-block;" class="left-align"> <%= momento.horaFin %></p>
+                    </div>
+                      <p id="preguntar" style="display:none;" ><%= momento.preguntar %></p>
+                      <p id="puntaje" style="display:none;" ><%= momento.puntaje %></p>
                   </div>
                   <div class="col m6 s12">
                     <a href="#" class="btn btn-sm btn-primary">Show</a>
-                    <a href="#" class="modal-trigger btn-editar btn btn-sm btn-warning blue">Edit</a>
+                    <a id='<%= momento.id %>' href="#editarModal" href="#" class="modal-trigger btn-editar btn btn-sm btn-warning blue">Edit</a>
                     <form action="#" method="POST">
                         <input type="hidden" name="_method" value="delete"/>
                         <input type="submit" class="btn red" value="Delete"/>
@@ -69,27 +74,21 @@
         </div>
         <div class="input-field col s5">
            <input id="horaInicio-create" type="text" name="horaInicio" data-cont="horaInicio" class="timepicker" type="text">
-           <label for="horaInicio-create">Hora</label>
+           <label for="horaInicio-create">Hora inicio</label>
          </div>
          <div class="input-field col s7">
-            <input id="diaFin-create" type="text" name="diaFin" data-cont="diaFin" class="datepicker" type="text">
-            <label for="diaFin-create">Dia de finalización</label>
+           <div class="col s6">
+                <input type="checkbox" class="filled-in" id="preg-create" name="preguntar" checked="checked" value="true" />
+                <label for="preg-create">Preguntas</label>
+           </div>
+           <div class="col s6">
+               <input type="checkbox" class="filled-in" id="puntaje-create" name="puntaje" checked="checked" value="true" />
+               <label for="puntaje-create">Puntaje</label>
+           </div>
           </div>
           <div class="input-field col s5">
              <input id="horaFin-create" type="text" name="horaFin" data-cont="horaFin" class="timepicker" type="text">
-             <label for="horaFin-create">Hora</label>
-           </div>
-           <div class="col s6">
-              <p>
-                <input type="checkbox" class="filled-in" id="preg-create" name="preguntar" checked="checked" value="true" />
-                <label for="preg-create">Preguntas</label>
-              </p>
-           </div>
-           <div class="col s6">
-             <p>
-               <input type="checkbox" class="filled-in" id="puntaje-create" name="puntaje" checked="checked" value="true" />
-               <label for="puntaje-create">Puntaje</label>
-             </p>
+             <label for="horaFin-create">Hora finalización</label>
            </div>
       <br/>
           <input type="hidden" name="horario" value="<%= evento.id %>"/>
@@ -100,6 +99,79 @@
 </div>
 <a class="close modal-close waves-effect waves-green btn-flat" href="#!"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
 </div>
+
+<div class="modal modal-fixed fadeInDown" id="editarModal" data-reveal>
+    <div class="modal-content">
+      <div class="row">
+      <form action="#" method="POST" class="form-signin" id="form-edit">
+        <h2 class="form-signin-heading"> Editar momento </h2>
+        <div class="input-field col s12 m6">
+           <input type="text" data-cont="nombre" id="name-edit" type="text" name="nombre" placeholder=" " class="validate" required>
+           </input>
+            <label for="name-edit">Nombre</label>
+         </div>
+         <div class="input-field col s12 m6">
+           <input id="ponente-edit" type="text" data-cont="nombre" type="text" name="ponente">
+           <label for="ponente-edit" class="active">Ponente(s)</label>
+         </div>
+         <div class="input-field col s7">
+            <input type="text" name="diaInicio" data-cont="diaInicio" id="diaInicio-edit" class="datepicker validate" type="text" placeholder=" " required>
+            <label for="diaInicio-edit">Dia de inicio</label>
+          </div>
+          <div class="input-field col s5">
+             <input type="text" name="horaInicio" data-cont="horaInicio" id="horaInicio-edit" class="timepicker validate" type="text" placeholder=" " required>
+             <label for="horaInicio-edit">Hora inicio</label>
+           </div>
+          <div class="col s3">
+              <input type="checkbox" class="filled-in" id="preg-edit" name="preguntar" checked="checked" value="true" />
+              <label for="preg-edit">Preguntas</label>
+          </div>
+          <div class="col s4">
+              <input type="checkbox" class="filled-in" id="puntaje-edit" name="puntaje" checked="checked" value="true" />
+              <label for="puntaje-edit">Puntaje</label>
+          </div>
+            <div class="input-field col s5">
+               <input type="text" name="horaFin" data-cont="horaFin" id="horaFin-edit" class="timepicker validate" type="text" placeholder=" " required>
+               <label for="horaFin-edit">Hora fin</label>
+             </div>
+        <br/>
+        <input type="submit" class="right btn btn-lg btn-primary btn-block" value="Editar evento"/>
+        <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
+      </form>
+    </div>
+</div>
+<a class="close modal-close waves-effect waves-green btn-flat" href="#!"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+  $( ".btn-editar" ).click(function() {
+    var id = $(this).attr('id');
+    var dir = '/gestionador/editar/momento/';
+    var url = dir.concat(id);
+    $('#form-edit').attr('action', url);
+    var nombre = $('div[data-id="'+id+'"]').find('#nombre').text();
+    var ponente = $('div[data-id="'+id+'"]').find('#ponente').text();
+    var diaInicio =  $('div[data-id="'+id+'"]').siblings('span').text();
+    var horaInicio = $('div[data-id="'+id+'"]').find('#horaInicio').text();
+    var horaFin = $('div[data-id="'+id+'"]').find('#horaFin').text();
+    var preguntar = $('div[data-id="'+id+'"]').find('#preguntar').text();
+    var puntaje = $('div[data-id="'+id+'"]').find('#puntaje').text();
+    $('#name-edit').val(nombre);
+    $('#diaInicio-edit').val(diaInicio);
+    $('#horaInicio-edit').val(horaInicio);
+    $('#horaFin-edit').val(horaFin);
+    if(!(preguntar)){
+      $('#preg-edit').val('checked', false);
+    }
+    console.log(preguntar);
+    if(!(puntaje)){
+      console.log("puta mierda");
+      $('#puntaje-edit').prop('checked', false);
+    }
+  });
+});
+</script>
 
 <script>
   $(document).ready(function(){

@@ -37,10 +37,9 @@ module.exports = {
 				_.each(eventos, function(evento) {
 					even = {}
 					even["nombre"] = evento.nombre;
+					even["id"] = evento.id;
 					var inicio = new Date(evento.diaInicio);
 					even["fechaInicio"] = inicio.getFullYear()+"-"+(inicio.getMonth()+1)+"-"+inicio.getDate()+"T"+evento.horaInicio;
-					var fin = new Date(evento.diaFin);
-					even["fechaFin"] = fin.getFullYear()+"-"+(fin.getMonth()+1)+"-"+fin.getDate()+"T"+evento.horaFin;
 					events[i] = even;
 					i++;
 				});

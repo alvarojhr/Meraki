@@ -20,9 +20,6 @@ module.exports = {
     diaInicio: {
       type: 'string'
     },
-    diaFin: {
-      type: 'string'
-    },
     horaInicio: {
       type: 'string'
     },
@@ -37,7 +34,7 @@ module.exports = {
     },
     score: {
       type: 'integer',
-      defaultsTo: '0'
+      defaultsTo: '5'
     },
     cant_votos: {
       type: 'integer',

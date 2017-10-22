@@ -1,3 +1,11 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="left fadeInDown">
+  <ul>
+    <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+    <li><a href="/eventos"><i style="    font-size: 40px;" class="material-icons prefix" >date_range</i></a></li>
+  </ul>
+</div>
 <div class="wrapper top fadeInDown">
 <div id="formContent" class="large">
   <div class="container listMoments">
@@ -16,19 +24,27 @@
             <% if( dirMomentos[i][0] != 0){ %>
             <span class="span-fecha"><%= dirMomentos[i][0].diaInicio %></span>
               <% _.each(dirMomentos[i], function(momento) { %>
-                <div class="col s12 contMoment">
-                  <div class="col m6 s12">
-                    <div class="col s8">
+                <a class="col s12 contMoment" href="/evento/<%= momento.horario %>/momento/<%= momento.id  %>">
+
+                    <div class="col s6">
                       <p><%= momento.nombre %></p>
                     </div>
-                    <div class="col s4">
+                    <div class="col s3">
                       <p class="left-align"> <i class="fa fa-play-circle-o light-green-text text-lighten-1" aria-hidden="true"></i> <%= momento.horaInicio %></p>
                     </div>
-                    <div class="col s4 offset-s8">
+                    <div class="col s3">
                       <p class="left-align"><i class="fa fa-pause-circle-o red-text text-lighten-1" aria-hidden="true"></i> <%= momento.horaFin %></p>
                     </div>
-                  </div>
-                </div>
+                    <div class="col s5 offset-s1">
+                      <p><%= momento.ponente %></p>
+                    </div>
+                    <% if(momento.puntaje){ %>
+                    <div class="col s5">
+                      <p>Puntaje: <%= momento.score %></p>
+                    </div>
+                    <% } %>
+
+                </a>
               <% }) %>
           <% } %>
           </div>
