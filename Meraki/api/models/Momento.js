@@ -20,6 +20,12 @@ module.exports = {
       type: 'string',
       required: true
     },
+    activo:{
+      type: 'boolean'
+    },
+    horaActiva: {
+      type: 'string'
+    },
     presentacion: {
       type: 'string'
     },

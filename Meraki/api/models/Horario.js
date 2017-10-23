@@ -24,6 +24,9 @@ module.exports = {
     horaFin: {
       type: 'string'
     },
+    momentoActivo: {
+      type: 'integer'
+    },
     momentos: {
       collection: 'momento',
       via: 'horario'
