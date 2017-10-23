@@ -34,6 +34,9 @@ h2 {
 }
 
 /* STRUCTURE */
+.textL{
+  text-align: left;
+}
 
 .left {
   z-index: 1000;
