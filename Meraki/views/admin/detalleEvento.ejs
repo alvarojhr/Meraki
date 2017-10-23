@@ -1,4 +1,12 @@
-<div class="wrapper top fadeInDown">
+<div class="left">
+  <ul>
+    <li><a href="/gestionador"><i class="fa fa-home fa-3" aria-hidden="true"></i></a></li>
+    <li><a href="/logout"><i class="fa fa-users fa-3" aria-hidden="true"></i></a></li>
+      <li><a href="/logout"><i class="fa fa-sign-out fa-3" aria-hidden="true"></i></a></li>
+  </ul>
+</div>
+
+<div class="wrapper top">
 <div id="formContent" class="large">
   <div class="container listMoments">
     <div class="row">
@@ -68,23 +76,23 @@
          <input id="ponente-create" type="text" data-cont="nombre" type="text" name="ponente">
          <label for="ponente-create" class="active">Ponente(s)</label>
        </div>
-       <div class="input-field col s7">
+       <div class="input-field col s12 m7">
           <input id="diaInicio-create" type="text" name="diaInicio" data-cont="diaInicio" class="datepicker" type="text">
           <label for="diaInicio-create">Dia de inicio</label>
         </div>
-        <div class="input-field col s5">
+        <div class="input-field col s12 m5">
            <input id="horaInicio-create" type="text" name="horaInicio" data-cont="horaInicio" class="timepicker" type="text">
            <label for="horaInicio-create">Hora inicio</label>
          </div>
-         <div class="col s3">
+         <div class="col s12 m3">
               <input type="checkbox" class="filled-in" id="preg-create" name="preguntar" checked="checked" value="true" />
               <label for="preg-create">Preguntas</label>
          </div>
-         <div class="col s4">
+         <div class="col s12 m4">
              <input type="checkbox" class="filled-in" id="puntaje-create" name="puntaje" checked="checked" value="true" />
              <label for="puntaje-create">Puntaje</label>
          </div>
-          <div class="input-field col s5">
+          <div class="input-field col s m5">
              <input id="horaFin-create" type="text" name="horaFin" data-cont="horaFin" class="timepicker" type="text">
              <label for="horaFin-create">Hora finalización</label>
            </div>
@@ -104,31 +112,31 @@
       <form action="#" method="POST" class="form-signin" id="form-edit">
         <h2 class="form-signin-heading"> Editar momento </h2>
         <div class="input-field col s12 m6">
-           <input type="text" data-cont="nombre" id="name-edit" type="text" name="nombre" placeholder=" " class="validate" required>
+           <input type="text" data-cont="nombre" id="name-edit" name="nombre" placeholder=" " class="validate" required>
            </input>
             <label for="name-edit">Nombre</label>
          </div>
          <div class="input-field col s12 m6">
-           <input id="ponente-edit" type="text" data-cont="nombre" type="text" name="ponente">
+           <input type="text" data-cont="ponente" id="ponente-edit" name="ponente" placeholder=" " class="validate" required>
            <label for="ponente-edit" class="active">Ponente(s)</label>
          </div>
-         <div class="input-field col s7">
+         <div class="input-field col s12 m7">
             <input type="text" name="diaInicio" data-cont="diaInicio" id="diaInicio-edit" class="datepicker validate" type="text" placeholder=" " required>
             <label for="diaInicio-edit">Dia de inicio</label>
           </div>
-          <div class="input-field col s5">
+          <div class="input-field col s12 m5">
              <input type="text" name="horaInicio" data-cont="horaInicio" id="horaInicio-edit" class="timepicker validate" type="text" placeholder=" " required>
              <label for="horaInicio-edit">Hora inicio</label>
            </div>
-          <div class="col s3">
+          <div class="col s12 m3">
               <input type="checkbox" class="filled-in" id="preg-edit" name="preguntar" checked="checked" value="true" />
               <label for="preg-edit">Preguntas</label>
           </div>
-          <div class="col s4">
+          <div class="col s12 m4">
               <input type="checkbox" class="filled-in" id="puntaje-edit" name="puntaje" checked="checked" value="true" />
               <label for="puntaje-edit">Puntaje</label>
           </div>
-            <div class="input-field col s5">
+            <div class="input-field col s12 m5">
                <input type="text" name="horaFin" data-cont="horaFin" id="horaFin-edit" class="timepicker validate" type="text" placeholder=" " required>
                <label for="horaFin-edit">Hora fin</label>
              </div>
@@ -159,14 +167,8 @@ $( document ).ready(function() {
     $('#diaInicio-edit').val(diaInicio);
     $('#horaInicio-edit').val(horaInicio);
     $('#horaFin-edit').val(horaFin);
-    if(!(preguntar)){
-      $('#preg-edit').val('checked', false);
-    }
-    console.log(preguntar);
-    if(!(puntaje)){
-      console.log("puta mierda");
-      $('#puntaje-edit').prop('checked', false);
-    }
+    $('#ponente-edit').val(ponente);
+
   });
 });
 </script>

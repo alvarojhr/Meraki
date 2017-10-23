@@ -16,4 +16,13 @@ module.exports = {
 				res.redirect('/gestionador/evento/' + momento.horario);
 			});
 		},
+	editarMomento: function(req, res)
+	 {
+		 Momento.update({id: req.param("id")},req.params.all()).exec(function (err, evento){
+			 if (err) {
+				 res.serverError(err);
+				 return res.redirect('/gestionador');
+			 }
+			 });
+		 }
 };
