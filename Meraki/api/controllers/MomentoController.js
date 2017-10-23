@@ -23,6 +23,7 @@ module.exports = {
 				 res.serverError(err);
 				 return res.redirect('/gestionador');
 			 }
+			 res.redirect('/gestionador/evento/' + momento.horario);
 			 });
 		 }
 };
