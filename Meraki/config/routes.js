@@ -35,6 +35,10 @@ module.exports.routes = {
  '/': 'PublicoController.home',
  '/eventos':'PublicoController.eventos',
  '/eventos/:id' : 'PublicoController.momentos',
+ '/eventos/:id/momento/:idMoment' : 'PublicoController.detalleMomento',
+ 'post /preguntar/momento/:id': 'PublicoController.hacerPregunta',
+ 'get /momento/:id': 'PublicoController.redirMoment',
+
   // '*': true,
 
   'get /login': { view: 'user/login' },

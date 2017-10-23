@@ -28,7 +28,7 @@ module.exports = {
 		 },
 	detalleMomento: function(req, res)
 	 	 {
-	 		 Momento.findOne({id: req.param("idMoment")}).exec(function (err, momento){
+	 		 Momento.findOne({id: req.param("idMoment")}).populate('preguntas').exec(function (err, momento){
 	 			 if (err) {
 	 				 res.serverError(err);
 	 				 return res.redirect('/gestionador');
@@ -56,7 +56,6 @@ module.exports = {
 				 Momento.update({id:req.param("idMomento")},{activo:'true',horaActiva:hora}).exec(function (err, momento){
 					 if (err) { res.serverError(err);}
 					 var url = '/gestionador/evento/' + momento[0].horario + '/momento/'+ momento[0].id;
-					 console.log(url);
 					 res.redirect(url);
 				 });
  	 		 }

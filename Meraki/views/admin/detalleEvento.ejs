@@ -26,6 +26,7 @@
               <% _.each(dirMomentos[i], function(momento) { %>
                 <div data-id="<%= momento.id %>" class="col s12 contMoment">
                   <div class="col m6 s12">
+                    <a href="/gestionador/evento/<%= momento.horario %>/momento/<%= momento.id %>">
                     <div class="col s8">
                       <p id="nombre" ><%= momento.nombre %></p>
                     </div>
@@ -38,12 +39,13 @@
                     <div class="col s4">
                       <i class="fa fa-pause-circle-o red-text text-lighten-1" aria-hidden="true"></i><p id="horaFin" style="padding-left:5px;display: inline-block;" class="left-align"> <%= momento.horaFin %></p>
                     </div>
+                    </a>
                       <p id="preguntar" style="display:none;" ><%= momento.preguntar %></p>
                       <p id="puntaje" style="display:none;" ><%= momento.puntaje %></p>
                       <input id="presentacion" type="hidden" value="<%= momento.presentacion %>">
                   </div>
                   <div class="col m6 s12">
-                    <a href="/gestionador/evento/<%= momento.horario %>/momento/<%= momento.id %>" class="btn btn-sm btn-primary">Show</a>
+                    <a href="/activar/evento/<%= momento.horario %>/momento/<%= momento.id %>" class="btn btn-sm btn-primary">Iniciar</a>
                     <a id='<%= momento.id %>' href="#editarModal" href="#" class="modal-trigger btn-editar btn btn-sm btn-warning blue">Edit</a>
                     <form action="#" method="POST">
                         <input type="hidden" name="_method" value="delete"/>

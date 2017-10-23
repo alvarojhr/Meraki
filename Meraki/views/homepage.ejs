@@ -123,7 +123,7 @@
         url = $('#autocomplete').val();;
         for(var i = 0; i <direc.length;i++){
           if(direc[i] == url){
-            $( location ).attr("href", direc[i+1]);
+            $( location ).attr("href", 'eventos/' + direc[i+1]);
           }
           else {
             i++;

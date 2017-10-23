@@ -24,7 +24,7 @@
             <% if( dirMomentos[i][0] != 0){ %>
             <span class="span-fecha"><%= dirMomentos[i][0].diaInicio %></span>
               <% _.each(dirMomentos[i], function(momento) { %>
-                <a class="col s12 contMoment" href="/evento/<%= momento.horario %>/momento/<%= momento.id  %>">
+                <a class="col s12 contMoment" href="/eventos/<%= momento.horario %>/momento/<%= momento.id  %>">
 
                     <div class="col s6">
                       <p><%= momento.nombre %></p>

@@ -30,6 +30,9 @@ module.exports.policies = {
   'HorarioController': {
     '*': 'isAuthenticated'
   },
+  'MomentoController': {
+    '*': 'isAuthenticated'
+  },
 
 
 

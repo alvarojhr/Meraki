@@ -1,8 +1,9 @@
-<div class="left">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="left fadeInDown">
   <ul>
-    <li><a href="/gestionador"><i class="fa fa-home fa-3" aria-hidden="true"></i></a></li>
-    <li><a href="/logout"><i class="fa fa-users fa-3" aria-hidden="true"></i></a></li>
-      <li><a href="/logout"><i class="fa fa-sign-out fa-3" aria-hidden="true"></i></a></li>
+    <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+    <li><a href="/eventos"><i style="    font-size: 40px;" class="material-icons prefix" >date_range</i></a></li>
   </ul>
 </div>
 
@@ -17,10 +18,17 @@
     <p id="nombre" class="textL" ><%= momento.nombre %></p>
     <p id="ponente" class="textL" ><%= momento.ponente %></p>
     <div class="row">
-      <% _.each(momento.preguntas, function(preg) { %>
-      <div class="col s12">
-          <%= preg.cont %>    
-      <% }) %>
+      <form class="col s12" action="/preguntar/momento/<%= momento.id %>" method="POST">
+        <input type="hidden" name="momento" value="<%= momento.id %>"/>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea1" name="cont" class="materialize-textarea" data-length="120"></textarea>
+            <label for="textarea1">Textarea</label>
+            <input type="submit" class="btn btn-lg btn-primary btn-block right " value="Preguntar"/>
+            <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
+          </div>
+        </div>
+      </form>
     </div>
 </div>
 </div>

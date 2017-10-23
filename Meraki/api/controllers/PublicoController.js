@@ -45,7 +45,6 @@ module.exports = {
 					events[i] = even;
 					i++;
 				});
-				console.log(events);
  				return res.view('user/eventos', {events: events});
  			});
  	 },
@@ -72,8 +71,6 @@ module.exports = {
 					if(momentos2.length > 0){
 						for(var j = 0; j <momentos2.length;j++) {
 							momento = momentos2[j];
-							console.log("Imprimir momentos2 en "+ j);
-							console.log(momentos2);
 							var date2 = new Date(momentos2[j]["diaInicio"]);
 							var diff = Math.ceil((Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24)));
 							if(diff == i){
@@ -98,5 +95,36 @@ module.exports = {
 					});
         });
       },
+ 	detalleMomento: function(req, res)
+ 	 	 {
+ 	 		 Momento.findOne({id: req.param("idMoment")}).exec(function (err, momento){
+ 	 			 if (err) {
+ 	 				 res.serverError(err);
+ 	 				 return res.redirect('/gestionador');
+ 	 			 }
+ 	 			 return res.view('user/detalleMomento', {
+ 					 momento: momento,
+ 					 idEvento: req.param("id")
+ 				 	})
+ 	 			 });
+ 	 		 },
+			 hacerPregunta: function(req, res) {
+		 			Pregunta.create(req.params.all(), function eventoCreated(err, preg) {
+		 				if (err) {
+		 					res.serverError(err);
+		 					return res.redirect('/');
+		 				}
+		 				res.redirect('/momento/' + preg.momento);
+		 			});
+		 		},
+				redirMoment: function(req, res) {
+					Momento.findOne({id: req.param("id")}).exec(function (err, momento){
+		        if (err) {
+		          return res.serverError(err);
+		        }
+ 					 var url = '/gestionador/evento/' + momento.horario + '/momento/'+ momento.id;
+ 		 				res.redirect(url);
+ 		 			});
+ 		 		}
 
 };
