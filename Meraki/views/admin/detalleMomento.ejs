@@ -11,6 +11,7 @@
 <div class="container listMoments">
     <p id="timer"></p>
     <div id="iframe-cont"></div>
+    <input type="hidden" id="input-frame" value="<%= momento.presentacion %>">
     <p id="nombre" class="textL" ><%= momento.nombre %></p>
     <p id="ponente" class="textL" ><%= momento.ponente %></p>
     <div class="row">
@@ -25,6 +26,8 @@
           <div class="input-field col s12">
             <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
             <label for="textarea1">Textarea</label>
+            <input type="submit" class="btn btn-lg btn-primary btn-block right " value="Crear evento"/>
+            <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
           </div>
         </div>
       </form>
@@ -35,7 +38,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  var str = '<%= momento.presentacion %>';
+  var str = $("#input-frame").val();
   $( "#iframe-cont" ).html(str);
 } );
 </script>
