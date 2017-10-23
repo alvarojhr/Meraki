@@ -40,9 +40,10 @@
                     </div>
                       <p id="preguntar" style="display:none;" ><%= momento.preguntar %></p>
                       <p id="puntaje" style="display:none;" ><%= momento.puntaje %></p>
+                      <input id="presentacion" type="hidden" value="<%= momento.presentacion %>">
                   </div>
                   <div class="col m6 s12">
-                    <a href="#" class="btn btn-sm btn-primary">Show</a>
+                    <a href="/gestionador/evento/<%= momento.horario %>/momento/<%= momento.id %>" class="btn btn-sm btn-primary">Show</a>
                     <a id='<%= momento.id %>' href="#editarModal" href="#" class="modal-trigger btn-editar btn btn-sm btn-warning blue">Edit</a>
                     <form action="#" method="POST">
                         <input type="hidden" name="_method" value="delete"/>
@@ -84,17 +85,21 @@
            <input id="horaInicio-create" type="text" name="horaInicio" data-cont="horaInicio" class="timepicker" type="text">
            <label for="horaInicio-create">Hora inicio</label>
          </div>
-         <div class="col s12 m3">
-              <input type="checkbox" class="filled-in" id="preg-create" name="preguntar" checked="checked" value="true" />
-              <label for="preg-create">Preguntas</label>
-         </div>
-         <div class="col s12 m4">
-             <input type="checkbox" class="filled-in" id="puntaje-create" name="puntaje" checked="checked" value="true" />
-             <label for="puntaje-create">Puntaje</label>
-         </div>
+         <div class="input-field col s12 m7">
+            <input id="presentacion-create" type="text" name="presentacion" data-cont="presentacion" type="text">
+            <label for="presentacion-create">iframe presentación</label>
+          </div>
           <div class="input-field col s m5">
              <input id="horaFin-create" type="text" name="horaFin" data-cont="horaFin" class="timepicker" type="text">
              <label for="horaFin-create">Hora finalización</label>
+           </div>
+           <div class="col s12 m3">
+                <input type="checkbox" class="filled-in" id="preg-create" name="preguntar" checked="checked" value="true" />
+                <label for="preg-create">Preguntas</label>
+           </div>
+           <div class="col s12 m3">
+               <input type="checkbox" class="filled-in" id="puntaje-create" name="puntaje" checked="checked" value="true" />
+               <label for="puntaje-create">Puntaje</label>
            </div>
       <br/>
           <input type="hidden" name="horario" value="<%= evento.id %>"/>
@@ -128,17 +133,21 @@
              <input type="text" name="horaInicio" data-cont="horaInicio" id="horaInicio-edit" class="timepicker validate" type="text" placeholder=" " required>
              <label for="horaInicio-edit">Hora inicio</label>
            </div>
-          <div class="col s12 m3">
-              <input type="checkbox" class="filled-in" id="preg-edit" name="preguntar" checked="checked" value="true" />
-              <label for="preg-edit">Preguntas</label>
-          </div>
-          <div class="col s12 m4">
-              <input type="checkbox" class="filled-in" id="puntaje-edit" name="puntaje" checked="checked" value="true" />
-              <label for="puntaje-edit">Puntaje</label>
-          </div>
+           <div class="input-field col s12 m7">
+             <input type="text" data-cont="presentacion" id="presentacion-edit" name="presentacion" placeholder=" " class="validate" required>
+             <label for="presentacion-edit" class="active">iframe presentación</label>
+           </div>
             <div class="input-field col s12 m5">
                <input type="text" name="horaFin" data-cont="horaFin" id="horaFin-edit" class="timepicker validate" type="text" placeholder=" " required>
                <label for="horaFin-edit">Hora fin</label>
+             </div>
+             <div class="col s12 m3">
+                 <input type="checkbox" class="filled-in" id="preg-edit" name="preguntar" checked="checked" value="true" />
+                 <label for="preg-edit">Preguntas</label>
+             </div>
+             <div class="col s12 m3">
+                 <input type="checkbox" class="filled-in" id="puntaje-edit" name="puntaje" checked="checked" value="true" />
+                 <label for="puntaje-edit">Puntaje</label>
              </div>
         <br/>
         <input type="submit" class="right btn btn-lg btn-primary btn-block" value="Editar evento"/>
@@ -163,11 +172,13 @@ $( document ).ready(function() {
     var horaFin = $('div[data-id="'+id+'"]').find('#horaFin').text();
     var preguntar = $('div[data-id="'+id+'"]').find('#preguntar').text();
     var puntaje = $('div[data-id="'+id+'"]').find('#puntaje').text();
+    var presentacion = $('div[data-id="'+id+'"]').find('#presentacion').val();
     $('#name-edit').val(nombre);
     $('#diaInicio-edit').val(diaInicio);
     $('#horaInicio-edit').val(horaInicio);
     $('#horaFin-edit').val(horaFin);
     $('#ponente-edit').val(ponente);
+    $('#presentacion-edit').val(presentacion);
 
   });
 });

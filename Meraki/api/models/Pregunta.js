@@ -9,7 +9,12 @@ module.exports = {
 
   attributes: {
     cont: {
-      type: 'string'
+      type: 'string',
+      required: true
+    },
+    active: {
+      type: 'boolean',
+      defaultsTo: 'false'
     },
     momento: {
       model: 'momento'

@@ -25,5 +25,19 @@ module.exports = {
 			 }
 			 res.redirect('/gestionador/evento/' + momento.horario);
 			 });
-		 }
+		 },
+		 detalleMomento: function(req, res)
+	 	 {
+	 		 Momento.findOne({id: req.param("idMoment")}).exec(function (err, momento){
+	 			 if (err) {
+	 				 res.serverError(err);
+	 				 return res.redirect('/gestionador');
+	 			 }
+				 console.log(momento)
+	 			 return res.view('admin/detalleMomento', {
+					 momento: momento,
+					 idEvento: req.param("id")
+				 });
+	 			 });
+	 		 }
 };

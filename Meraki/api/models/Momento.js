@@ -9,12 +9,18 @@ module.exports = {
 
   attributes: {
     nombre: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     horario: {
-      model: 'horario'
+      model: 'horario',
+      required: true
     },
     ponente: {
+      type: 'string',
+      required: true
+    },
+    presentacion: {
       type: 'string'
     },
     diaInicio: {
