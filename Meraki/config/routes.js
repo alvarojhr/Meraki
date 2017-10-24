@@ -36,7 +36,7 @@ module.exports.routes = {
  '/eventos':'PublicoController.eventos',
  '/eventos/:id' : 'PublicoController.momentos',
  '/eventos/:id/momento/:idMoment' : 'PublicoController.detalleMomento',
- 'post /preguntar/momento/:id': 'PublicoController.hacerPregunta',
+ 'post /preguntar/momento/:idMomento': 'PublicoController.hacerPregunta',
  'get /momento/:id': 'PublicoController.redirMoment',
 
   // '*': true,
