@@ -16,10 +16,27 @@
     <input type="hidden" id="input-frame" value="<%= momento.presentacion %>">
     <p id="nombre" class="textL" ><%= momento.nombre %></p>
     <p id="ponente" class="textL" ><%= momento.ponente %></p>
+      <h3 style="display: inline-block;margin-bottom: 15px;" >Preguntas y comentarios</h3>
     <div class="row">
       <% _.each(momento.preguntas, function(preg) { %>
       <div class="col s12">
-          <%= preg.cont %>    
+        <div class="col s8">
+          <%= preg.cont %>
+        </div>
+        <div class="col s2">
+          <form action="/pregunta/activar/<%= preg.id %>" method="POST">
+            <input type="hidden" name="active" value="true"/>
+            <input type="submit" class="btn green" value="+" />
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+          </form>
+        </div>
+        <div class="col s2">
+          <form action="/pregunta/activar/<%= preg.id %>" method="POST">
+            <input type="hidden" name="active" value="false"/>
+            <input type="submit" class="btn red" value="x" />
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+          </form>
+        </div>
       <% }) %>
     </div>
 </div>
