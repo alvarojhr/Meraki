@@ -6,7 +6,7 @@
   "keywords": [],
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "ejs": "2.3.4",
+    "ejs": "2.5.5",
     "express-jwt": "^5.3.0",
     "fullcalendar": "^3.6.1",
     "grunt": "1.0.1",
@@ -20,7 +20,7 @@
     "grunt-contrib-uglify": "1.0.1",
     "grunt-contrib-watch": "1.0.0",
     "grunt-sails-linker": "~0.10.1",
-    "grunt-sync": "0.5.2",
+    "grunt-sync": "0.6.2",
     "include-all": "^1.0.0",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
@@ -30,11 +30,14 @@
     "rc": "1.0.1",
     "sails": "^0.12.14",
     "sails-disk": "~0.10.9",
-    "sails-postgresql": "^0.11.4"
+    "sails-postgresql": "^0.11.4",
+    "snyk": "^1.45.0"
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "main": "app.js",
   "repository": {
@@ -42,5 +45,6 @@
     "url": "git://github.com/adminweb/Meraki.git"
   },
   "author": "adminweb",
-  "license": ""
+  "license": "",
+  "snyk": true
 }
