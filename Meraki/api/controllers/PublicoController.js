@@ -122,7 +122,7 @@ module.exports = {
 		        if (err) {
 		          return res.serverError(err);
 		        }
- 					 var url = '/gestionador/evento/' + momento.horario + '/momento/'+ momento.id;
+ 					 var url = '/eventos/' + momento.horario + '/momento/'+ momento.id;
  		 				res.redirect(url);
  		 			});
  		 		}
