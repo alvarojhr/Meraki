@@ -30,6 +30,14 @@
         </div>
       </form>
     </div>
+    <div class="row">
+      <% _.each(momento.preguntas, function(preg) { %>
+      <div class="col s12">
+        <% if(momento.active=='true'){ %>
+          <%= preg.cont %>
+        <% } %>
+      <% }) %>
+    </div>
 </div>
 </div>
 </div>

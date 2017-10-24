@@ -53,7 +53,8 @@ module.exports.routes = {
   'get /gestionador/evento/:id/momento/:idMoment': 'MomentoController.detalleMomento',
   'post /gestionador/editar/momento/:id': 'MomentoController.editarMomento',
   'post /gestionador/momento/create': 'MomentoController.create',
-  '/activar/evento/:id/momento/:idMomento': 'MomentoController.activarMomento'
+  'post /pregunta/activar/:id': 'MomentoController.activarMomento',
+  '/activar/evento/:id/momento/:idMomento': 'MomentoController.iniciarMomento'
 
   /***************************************************************************
   *                                                                          *

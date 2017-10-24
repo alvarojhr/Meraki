@@ -39,7 +39,7 @@ module.exports = {
 				 	})
 	 			 });
 	 		 },
-		activarMomento: function(req, res)
+		iniciarMomento: function(req, res)
 	 	 	 {
 	 	 		 Horario.findOne({id: req.param("id")}).exec(function (err, evento){
 		 	 			 if (err) {
@@ -58,5 +58,15 @@ module.exports = {
 					 var url = '/gestionador/evento/' + momento[0].horario + '/momento/'+ momento[0].id;
 					 res.redirect(url);
 				 });
- 	 		 }
+ 	 		 },
+			 activarMomento: function(req, res)
+	 	 	 	 {
+	 				 Pregunta.update({id:req.param("id")},{
+						 active:req.param("active")
+					 }).exec(function (err, preg){
+	 					 if (err) { res.serverError(err);}
+	 					 var url = '/momento/'+ preg[0].id;
+	 					 res.redirect(url);
+	 				 });
+	  	 		 }
 };
