@@ -31,7 +31,7 @@
     "sails": "^0.12.14",
     "sails-disk": "~0.10.9",
     "sails-postgresql": "^0.11.4",
-    "snyk": "^1.45.0"
+    "snyk": "^1.114.0"
   },
   "scripts": {
     "debug": "node debug app.js",
