@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.1
+version: v1.25.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -68,6 +68,12 @@ patch:
         patched: '2017-10-24T16:18:51.985Z'
     - sails > grunt-contrib-watch > tiny-lr > debug:
         patched: '2017-10-24T16:18:51.985Z'
+    - sails > i18n > debug:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > @sailshq/express > @sailshq/connect > method-override > debug:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > sails-hook-sockets > machinepack-urls > machine > debug:
+        patched: '2022-10-07T14:27:28.094Z'
   'npm:ejs:20161128':
     - sails > ejs:
         patched: '2017-10-24T16:18:51.985Z'
@@ -151,8 +157,98 @@ patch:
         patched: '2017-10-24T16:18:51.985Z'
     - sails > skipper > body-parser > debug > ms:
         patched: '2017-10-24T16:18:51.985Z'
+    - sails > i18n > debug > ms:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > @sailshq/express > @sailshq/connect > method-override > debug > ms:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > sails-hook-sockets > machinepack-urls > machine > debug > ms:
+        patched: '2022-10-07T14:27:28.094Z'
   'npm:negotiator:20160616':
     - sails > @sailshq/express > @sailshq/connect > compression > accepts > negotiator:
         patched: '2017-10-24T16:18:51.985Z'
     - sails > @sailshq/express > @sailshq/connect > serve-index > accepts > negotiator:
         patched: '2017-10-24T16:18:51.985Z'
+  'npm:extend:20180424':
+    - grunt-contrib-less > less > request > extend:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-less > less > request > extend:
+        patched: '2022-10-07T14:27:28.094Z'
+  'npm:hoek:20180212':
+    - express-jwt > jsonwebtoken > joi > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - express-jwt > jsonwebtoken > joi > topo > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - grunt-contrib-less > less > request > hawk > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - grunt-contrib-less > less > request > hawk > boom > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - grunt-contrib-less > less > request > hawk > sntp > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-less > less > request > hawk > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - grunt-contrib-less > less > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-less > less > request > hawk > boom > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-less > less > request > hawk > sntp > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-less > less > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-07T14:27:28.094Z'
+  SNYK-JS-LODASH-567746:
+    - grunt-contrib-less > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - grunt-contrib-uglify > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-less > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-uglify > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - grunt-contrib-watch > gaze > globule > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > skipper > async > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-watch > gaze > globule > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+  'npm:lodash:20180130':
+    - grunt > grunt-legacy-log > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > include-all > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > captains-log > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails-disk > waterline-criteria > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails-disk > waterline-cursor > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > sails-util > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt > grunt-legacy-log > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > sails-disk > waterline-criteria > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > sails-disk > waterline-cursor > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > sails-generate > sails-generate-generator > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > skipper > skipper-disk > lodash:
+        patched: '2022-10-07T14:27:28.094Z'
+  'npm:mime:20170907':
+    - sails > @sailshq/express > send > mime:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > @sailshq/express > @sailshq/connect > serve-static > send > mime:
+        patched: '2022-10-07T14:27:28.094Z'
+  'npm:moment:20170905':
+    - fullcalendar > moment:
+        patched: '2022-10-07T14:27:28.094Z'
+    - express-jwt > jsonwebtoken > joi > moment:
+        patched: '2022-10-07T14:27:28.094Z'
+  'npm:stringstream:20180511':
+    - grunt-contrib-less > less > request > stringstream:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-less > less > request > stringstream:
+        patched: '2022-10-07T14:27:28.094Z'
+  'npm:tough-cookie:20170905':
+    - grunt-contrib-less > less > request > tough-cookie:
+        patched: '2022-10-07T14:27:28.094Z'
+    - sails > grunt-contrib-less > less > request > tough-cookie:
+        patched: '2022-10-07T14:27:28.094Z'
